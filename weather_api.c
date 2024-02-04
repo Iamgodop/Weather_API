@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
+#define FILE_CONTENT_LENGTH 500
+
 void main()
 {
-	char api[200], city[50], *buffer, file_content[500];
+	char api[200], city[50], *buffer, file_content[FILE_CONTENT_LENGTH];
 
 	input: printf("Enter city name: ");
 	gets(city);
@@ -12,7 +14,7 @@ void main()
 	system(api);
 
 	FILE *fp_weather = fopen("weather.txt", "r");
-	fgets(file_content, 500, fp_weather);
+	fgets(file_content, FILE_CONTENT_LENGTH, fp_weather);
 
 	if (! strcmp(file_content, "{\"cod\":\"404\",\"message\":\"city not found\"}"))
 	{

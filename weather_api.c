@@ -5,7 +5,7 @@
 
 void main()
 {
-	char api[200], city[50], *buffer, file_content[FILE_CONTENT_LENGTH];
+	char api[200], city[50], *buffer, file_content[FILE_CONTENT_LENGTH], delimitor[] = "\"";
 
 	input: printf("Enter city name: ");
 	gets(city);
@@ -24,12 +24,12 @@ void main()
 
 	else
 	{
-		buffer = strtok(file_content, "\"");
+		buffer = strtok(file_content, delimitor);
 		while (strcmp(buffer, "temp"))
 		{
-			buffer = strtok(NULL, "\"");
+			buffer = strtok(NULL, delimitor);
 		}
-		buffer = strtok(NULL, "\"");
+		buffer = strtok(NULL, delimitor);
 		buffer[0] = buffer[strlen(buffer) - 1] = ' ';
 		printf("Temperature in %s is%sC", city, buffer);	
 	}
